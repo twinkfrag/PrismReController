@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PrismReController.Views
 {
 	/// <summary>
-	/// MainWindow.xaml の相互作用ロジック
+	/// VlcControl.xaml の相互作用ロジック
 	/// </summary>
-	public partial class MainWindow
+	public partial class VlcControl : UserControl
 	{
-		public MainWindow()
+		public VlcControl()
 		{
 			InitializeComponent();
 		}
