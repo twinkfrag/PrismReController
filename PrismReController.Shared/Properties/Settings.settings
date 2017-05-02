@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="VlcPort" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">8080</Value>
+      <Value Profile="(Default)">8088</Value>
     </Setting>
     <Setting Name="VlcPassword" Type="System.String" Scope="User">
-      <Value Profile="(Default)">a</Value>
+      <Value Profile="(Default)">vlc</Value>
     </Setting>
     <Setting Name="ConnectionRetryCount" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>

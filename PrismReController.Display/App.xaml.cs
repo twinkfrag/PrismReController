@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace PrismReController
+namespace PrismReController.Display
 {
 	/// <summary>
 	/// App.xaml の相互作用ロジック

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace PrismReController.Shared.Utils
 {
-	public static class TaskEnumerableExtensions
+	public static class TaskEx
 	{
 		public static Task WhenAll(this IEnumerable<Task> tasks)
 		{

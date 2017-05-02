@@ -47,7 +47,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="Utils\TaskEnumerableExtensions.cs" />
+    <Compile Include="Utils\EnumerableEx.cs" />
+    <Compile Include="Utils\TaskEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

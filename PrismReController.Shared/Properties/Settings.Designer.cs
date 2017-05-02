@@ -25,7 +25,7 @@ namespace PrismReController.Shared.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8080")]
+        [global::System.Configuration.DefaultSettingValueAttribute("8088")]
         public int VlcPort {
             get {
                 return ((int)(this["VlcPort"]));
@@ -37,7 +37,7 @@ namespace PrismReController.Shared.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("a")]
+        [global::System.Configuration.DefaultSettingValueAttribute("vlc")]
         public string VlcPassword {
             get {
                 return ((string)(this["VlcPassword"]));

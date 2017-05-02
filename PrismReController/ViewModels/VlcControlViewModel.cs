@@ -25,7 +25,7 @@ namespace PrismReController.ViewModels
 				async () => await Connection.Connectings.Select(async x => await x.Vlc.Stop()).WhenAll(),
 				() => Connection.Connectings.Any(x => x.Vlc?.IsConnected ?? false));
 
-			Connection.VlcConnectingsRaiseChanged += (_, __) => CommandsRaiseCanExecuteChanged();
+			Connection.VlcConnectingsRaiseChanged += CommandsRaiseCanExecuteChanged;
 		}
 
 		public ViewModelCommand PlayCommand { get; }
@@ -34,7 +34,7 @@ namespace PrismReController.ViewModels
 
 		public ViewModelCommand StopCommand { get; }
 
-		public void CommandsRaiseCanExecuteChanged()
+		public void CommandsRaiseCanExecuteChanged(object sender, EventArgs e)
 		{
 			PlayCommand.RaiseCanExecuteChanged();
 			PauseCommand.RaiseCanExecuteChanged();
