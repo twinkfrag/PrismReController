@@ -22,6 +22,7 @@ namespace PrismReController.ViewModels
 				() => Connection.Connectings.Any(x => x.Vlc?.IsConnected ?? false));
 
 			Connection.VlcConnectingsRaiseChanged += CommandsRaiseCanExecuteChanged;
+			Connection.VlcConnectingsRaiseChanged += (_, __) => RaisePropertyChanged(nameof(ConnectedVlcCount));
 		}
 
 		public ViewModelCommand PlayCommand { get; }
@@ -29,6 +30,8 @@ namespace PrismReController.ViewModels
 		public ViewModelCommand PauseCommand { get; }
 
 		public ViewModelCommand StopCommand { get; }
+
+		public int ConnectedVlcCount => Connection.Connectings.Count(x => x.Vlc.IsConnected);
 
 		public void CommandsRaiseCanExecuteChanged(object sender, EventArgs e)
 		{

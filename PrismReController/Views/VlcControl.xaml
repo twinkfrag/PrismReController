@@ -6,35 +6,49 @@
              xmlns:views="clr-namespace:PrismReController.Views"
 			 xmlns:viewModels="clr-namespace:PrismReController.ViewModels"
              mc:Ignorable="d" 
+			 Style="{DynamicResource MainControlKey}"
              d:DesignHeight="300" d:DesignWidth="300">
-			 <UserControl.DataContext>
-				<viewModels:VlcControlViewModel />
-			 </UserControl.DataContext>
-	<Grid Margin="20" Grid.Row="1">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="Auto" />
-			<ColumnDefinition />
-			<ColumnDefinition Width="Auto" />
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition />
-		</Grid.RowDefinitions>
-
-		<Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2">
+	<Control.DataContext>
+		<viewModels:VlcControlViewModel />
+	</Control.DataContext>
+	<StackPanel>
+		<TextBlock Margin="10">
+			<Run Text="Connected to " />
+			<Run Text="{Binding ConnectedVlcCount, Mode=OneWay}" />
+			<Run Text=" VLC Media Players" />
+		</TextBlock>
+		<Grid Margin="50">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition />
 				<ColumnDefinition />
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
-			<Button Grid.Column="0" Content="&#x23F5;" Command="{Binding PlayCommand, Mode=OneWay}"
-					VerticalAlignment="Center" HorizontalAlignment="Center" />
-			<Button Grid.Column="1" Content="&#x23F8;" Command="{Binding PauseCommand, Mode=OneWay}" 
-					VerticalAlignment="Center" HorizontalAlignment="Center" />
-			<Button Grid.Column="2" Content="&#x23F9;" Command="{Binding StopCommand, Mode=OneWay}" 
-					VerticalAlignment="Center" HorizontalAlignment="Center" />
-		</Grid>
-	</Grid>
+			<Grid.Resources>
+				<Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+					<Setter Property="VerticalAlignment"
+							Value="Center" />
+					<Setter Property="HorizontalAlignment"
+							Value="Center" />
+				</Style>
+				<Style TargetType="{x:Type TextBlock}">
+					<Setter Property="FontFamily"
+							Value="Segoe UI Symbol" />
+					<Setter Property="FontSize" 
+							Value="30" />
+					<Setter Property="Margin"
+							Value="1,-1,0,2" />
+				</Style>
+			</Grid.Resources>
 
+			<Button Grid.Column="0" Command="{Binding PlayCommand, Mode=OneWay}">
+				<TextBlock Text="&#x23F5;" />
+			</Button>
+			<Button Grid.Column="1" Command="{Binding PauseCommand, Mode=OneWay}">
+				<TextBlock Text="&#x23F8;" />
+			</Button>
+			<Button Grid.Column="2" Command="{Binding StopCommand, Mode=OneWay}">
+				<TextBlock Text="&#x23F9;" />
+			</Button>
+		</Grid>
+	</StackPanel>
 </UserControl>

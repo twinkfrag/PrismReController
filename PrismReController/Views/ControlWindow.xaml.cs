@@ -1,8 +1,8 @@
 ﻿namespace PrismReController.Views
 {
-	public partial class VlcControl
+	public partial class ControlWindow
 	{
-		public VlcControl()
+		public ControlWindow()
 		{
 			InitializeComponent();
 		}

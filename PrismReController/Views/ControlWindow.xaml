@@ -1,0 +1,81 @@
+﻿<controls:MetroWindow x:Class="PrismReController.Views.ControlWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:controls="http://schemes.grabacr.net/winfx/2014/controls"
+		xmlns:sharedViews="clr-namespace:PrismReController.Shared.Views;assembly=PrismReController.Shared"
+        xmlns:views="clr-namespace:PrismReController.Views"
+		xmlns:viewModels="clr-namespace:PrismReController.ViewModels"
+        mc:Ignorable="d"
+		TextOptions.TextFormattingMode="Display"
+		Background="{DynamicResource ThemeBrushKey}"
+        Title="PrismReController" Height="350" Width="525" FontFamily="Segoe UI">
+	<Window.DataContext>
+		<viewModels:ControlWindowViewModel />
+	</Window.DataContext>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<sharedViews:CaptionBar Grid.Row="0" />
+
+		<TabControl Grid.Row="1" Style="{StaticResource TabControlStyleKey}">
+			<TabItem>
+				<TabItem.Header>
+					<TextBlock Text="Connect"
+							   Style="{StaticResource TabHeaderTextStyleKey}"/>
+				</TabItem.Header>
+
+				<ContentControl Style="{DynamicResource MainControlKey}">
+					<Grid Margin="8,0,8,8">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Text="DESTINATION"
+							Grid.Row="0"
+							Grid.Column="0"
+							VerticalAlignment="Bottom"
+							Margin="10,10,10,15.5" />
+						<controls:PromptTextBox 
+							Text="{Binding Destination, Mode=TwoWay}" 
+							Prompt="ADDRESS" 
+							Grid.Row="0"
+							Grid.Column="1"
+							Margin="10" />
+						<Button Content="Connect" 
+							Command="{Binding ConnectCommand}" 
+							Grid.Row="1"
+							Grid.Column="0"
+							Grid.ColumnSpan="2"
+							Margin="50,10" />
+
+					</Grid>
+				</ContentControl>
+			</TabItem>
+
+			<TabItem>
+				<TabItem.Header>
+					<TextBlock Text="VLC Media Player"
+							   Style="{StaticResource TabHeaderTextStyleKey}"/>
+				</TabItem.Header>
+
+				<views:VlcControl />
+			</TabItem>
+		</TabControl>
+
+		<sharedViews:StatusBar Grid.Row="2" >
+			<TextBlock Text="{Binding WindowStatus, Mode=OneWay}" />
+		</sharedViews:StatusBar>
+	</Grid>
+</controls:MetroWindow>
+
