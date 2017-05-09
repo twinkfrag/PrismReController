@@ -3,6 +3,9 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+		xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+		xmlns:l="http://schemas.livet-mvvm.net/2011/wpf" 
 		xmlns:controls="http://schemes.grabacr.net/winfx/2014/controls"
 		xmlns:sharedViews="clr-namespace:PrismReController.Shared.Views;assembly=PrismReController.Shared"
 		xmlns:viewModels="clr-namespace:PrismReController.Display.ViewModels"
@@ -51,12 +54,30 @@
 				<controls:PromptTextBox 
 					Grid.Row="1"
 					Grid.Column="1" 
+					Prompt=""
+					Text="{Binding VlcExe, Mode=TwoWay}"
 					Margin="10" />
 				<Button Content="参照"
 					FontSize="16"
 					Grid.Row="1"
 					Grid.Column="2"
-					Margin="6,10"/>
+					Margin="6,10">
+					<i:Interaction.Triggers>
+						<i:EventTrigger EventName="Click">
+							<l:OpenFileDialogInteractionMessageAction>
+								<l:DirectInteractionMessage CallbackCommand="{Binding VlcExeSelectionCommand}">
+									<l:OpeningFileSelectionMessage
+										FileName="vlc.exe"
+										Filter="vlc.exe|vlc.exe"
+										InitialDirectory="{Binding VlcDir, Mode=OneWay}"
+										MultiSelect="False"
+										Title="VLCを指定"
+										/>
+								</l:DirectInteractionMessage>
+							</l:OpenFileDialogInteractionMessageAction>
+						</i:EventTrigger>
+					</i:Interaction.Triggers>	
+				</Button>
 
 				<Button Content="Execute VLC media player" 
 					Command="{Binding ExecuteVlcCommand}" 

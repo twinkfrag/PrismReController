@@ -14,7 +14,16 @@ namespace PrismReController.Display.Models
 		public static void Run(FileInfo exeFile)
 		{
 			var info = new ProcessStartInfo(exeFile.FullName, $"--extraintf=http --http-port {Settings.Default.VlcPort} --http-password {Settings.Default.VlcPassword}");
-			Process.Start(info);
+			try
+			{
+				var process = Process.Start(info);
+
+				Settings.Default.Save();
+			}
+			catch (FileNotFoundException)
+			{
+				// TODO: ステータスバーにでも出す
+			}			
 		}
 	}
 }

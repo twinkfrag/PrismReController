@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Livet;
 using Livet.Commands;
+using Livet.Messaging.IO;
 using PrismReController.Display.Models;
+using PrismReController.Display.Properties;
 using PrismReController.Shared.Utils;
 
 namespace PrismReController.Display.ViewModels
@@ -25,9 +27,14 @@ namespace PrismReController.Display.ViewModels
 					.JoinToString();
 			});
 
+			VlcExeSelectionCommand = new ListenerCommand<OpeningFileSelectionMessage>(m =>
+			{
+				VlcExe = m.Response[0];
+			});
+
 			ExecuteVlcCommand = new ViewModelCommand(() =>
 			{
-				VlcRunService.Run(new FileInfo(@"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe"));
+				VlcRunService.Run(new FileInfo(VlcExe));
 			});
 		}
 
@@ -45,18 +52,20 @@ namespace PrismReController.Display.ViewModels
 			}
 		}
 
-		private FileInfo vlcExe;
-
-		public FileInfo VlcExe
+		public string VlcExe
 		{
-			get => vlcExe;
+			get => Settings.Default.VlcExePath;
 			set
 			{
-				if (vlcExe == value) return;
-				vlcExe = value;
+				if (Settings.Default.VlcExePath == value) return;
+				Settings.Default.VlcExePath = value;
 				RaisePropertyChanged();
 			}
 		}
+
+		public string VlcDir => Directory.GetParent(VlcExe).FullName;
+
+		public ListenerCommand<OpeningFileSelectionMessage> VlcExeSelectionCommand { get; }
 
 		public ViewModelCommand ExecuteVlcCommand { get; }
 	}
