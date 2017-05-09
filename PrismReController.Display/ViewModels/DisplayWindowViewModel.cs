@@ -29,7 +29,7 @@ namespace PrismReController.Display.ViewModels
 
 			VlcExeSelectionCommand = new ListenerCommand<OpeningFileSelectionMessage>(m =>
 			{
-				VlcExe = m.Response[0];
+				VlcExe = m?.Response?[0] ?? VlcExe;
 			});
 
 			ExecuteVlcCommand = new ViewModelCommand(() =>
