@@ -74,6 +74,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\ActiveChangeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DisplayWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -82,13 +86,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Interop\Win32.cs" />
     <Compile Include="Models\VlcRunService.cs" />
+    <Compile Include="Models\WindowService.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ActiveChangeViewModel.cs" />
     <Compile Include="ViewModels\DisplayWindowViewModel.cs" />
+    <Compile Include="Views\ActiveChangeView.xaml.cs">
+      <DependentUpon>ActiveChangeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DisplayWindow.xaml.cs">
       <DependentUpon>DisplayWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

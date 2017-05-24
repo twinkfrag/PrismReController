@@ -9,6 +9,7 @@
 		xmlns:controls="http://schemes.grabacr.net/winfx/2014/controls"
 		xmlns:sharedViews="clr-namespace:PrismReController.Shared.Views;assembly=PrismReController.Shared"
 		xmlns:viewModels="clr-namespace:PrismReController.Display.ViewModels"
+		xmlns:views="clr-namespace:PrismReController.Display.Views"
 		mc:Ignorable="d"
 		TextOptions.TextFormattingMode="Display"
 		Background="{DynamicResource ThemeBrushKey}"
@@ -31,6 +32,7 @@
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" />
@@ -85,6 +87,11 @@
 					Grid.Column="0"
 					Grid.ColumnSpan="3"
 					Margin="50,10"/>
+
+				<views:ActiveChangeView 
+					Grid.Row="3"
+					Grid.Column="0"
+					Grid.ColumnSpan="3" />
 			</Grid>
 		</ContentControl>
 
