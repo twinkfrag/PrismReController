@@ -7,7 +7,11 @@
 		xmlns:sharedViews="clr-namespace:PrismReController.Shared.Views;assembly=PrismReController.Shared"
         xmlns:views="clr-namespace:PrismReController.Views"
 		xmlns:viewModels="clr-namespace:PrismReController.ViewModels"
-        mc:Ignorable="d"
+		xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+		xmlns:behaviors="http://schemas.livet-mvvm.net/2011/wpf"
+		xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=System"
+		xmlns:data="clr-namespace:PrismReController.Shared.Data;assembly=PrismReController.Shared"
+		mc:Ignorable="d"
 		TextOptions.TextFormattingMode="Display"
 		Background="{DynamicResource ThemeBrushKey}"
         Title="PrismReController" Height="350" Width="525" FontFamily="Segoe UI">
@@ -23,13 +27,8 @@
 
 		<sharedViews:CaptionBar Grid.Row="0" />
 
-		<TabControl Grid.Row="1" Style="{StaticResource TabControlStyleKey}">
-			<TabItem>
-				<TabItem.Header>
-					<TextBlock Text="Connect"
-							   Style="{StaticResource TabHeaderTextStyleKey}"/>
-				</TabItem.Header>
-
+		<TabControl Grid.Row="1" Style="{DynamicResource MetroTabControlStyleKey}">
+			<TabItem Header="Connect">
 				<ContentControl Style="{DynamicResource MainControlKey}">
 					<Grid Margin="8,0,8,8">
 						<Grid.RowDefinitions>
@@ -63,12 +62,7 @@
 				</ContentControl>
 			</TabItem>
 
-			<TabItem>
-				<TabItem.Header>
-					<TextBlock Text="VLC Media Player"
-							   Style="{StaticResource TabHeaderTextStyleKey}"/>
-				</TabItem.Header>
-
+			<TabItem Header="VLC Media Player">
 				<views:VlcControl />
 			</TabItem>
 		</TabControl>
