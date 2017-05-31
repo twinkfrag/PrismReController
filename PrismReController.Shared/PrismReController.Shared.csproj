@@ -13,6 +13,7 @@
 		<Page Include="**\*.xaml" Exclude="App.xaml" SubType="Designer" Generator="MSBuild:Compile" />
 		<PackageReference Include="LivetCask" Version="1.3.1" />
 		<PackageReference Include="MetroRadiance" Version="2.4.0" />
+		<PackageReference Include="System.Reactive" Version="3.1.1" />
 		<Compile Update="**\*.xaml.cs" SubType="Designer" DependentUpon="%(Filename)" />
 	</ItemGroup>
 	<ItemGroup>
