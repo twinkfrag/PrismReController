@@ -67,9 +67,7 @@
 			</TabItem>
 		</TabControl>
 
-		<sharedViews:StatusBar Grid.Row="2" >
-			<TextBlock Text="{Binding WindowStatus, Mode=OneWay}" />
-		</sharedViews:StatusBar>
+		<sharedViews:StatusBar Grid.Row="2" />
 	</Grid>
 </controls:MetroWindow>
 

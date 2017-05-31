@@ -2,6 +2,7 @@
 using Livet;
 using Livet.Commands;
 using PrismReController.Models;
+using PrismReController.Shared.Models;
 
 namespace PrismReController.ViewModels
 {
@@ -14,7 +15,7 @@ namespace PrismReController.ViewModels
 				void statusUpdate(object sender, EventArgs e)
 				{
 					Connection.VlcConnectingsRaiseChanged -= statusUpdate;
-					WindowStatus = $"Connect to {Destination}";
+					StatusService.Current.Notify($"Connect to {Destination}");
 				}
 
 				Connection.VlcConnectingsRaiseChanged += statusUpdate;
@@ -31,19 +32,6 @@ namespace PrismReController.ViewModels
 			{
 				if (destination == value) return;
 				destination = value;
-				RaisePropertyChanged();
-			}
-		}
-
-		private string windowStatus;
-
-		public string WindowStatus
-		{
-			get => windowStatus;
-			set
-			{
-				if (windowStatus == value) return;
-				windowStatus = value;
 				RaisePropertyChanged();
 			}
 		}

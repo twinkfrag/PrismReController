@@ -1,19 +1,21 @@
 ﻿<Grid x:Class="PrismReController.Shared.Views.StatusBar"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-			 xmlns:controls="http://schemes.grabacr.net/winfx/2014/controls"
-			 Height="23"
-			 Background="{DynamicResource AccentBrushKey}"
-             mc:Ignorable="d">
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:controls="http://schemes.grabacr.net/winfx/2014/controls"
+	  xmlns:models="clr-namespace:PrismReController.Shared.Models"
+	  Height="23"
+	  Background="{DynamicResource AccentBrushKey}"
+	  mc:Ignorable="d">
 	<Grid.ColumnDefinitions>
 		<ColumnDefinition Width="*" />
 		<ColumnDefinition Width="Auto" />
 	</Grid.ColumnDefinitions>
 
-	<ContentControl Grid.Column="0" x:Name="MainControl"
-					Margin="5,0"
-					Foreground="{DynamicResource AccentForegroundBrushKey}"/>
+	<TextBlock Grid.Column="0"
+			   Text="{Binding Source={x:Static models:StatusService.Current}, Path=Message, Mode=OneWay}"
+			   Margin="5,0"
+			   Foreground="{DynamicResource AccentForegroundBrushKey}"/>
 	<controls:ResizeGrip Grid.Column="1" />
 </Grid>
