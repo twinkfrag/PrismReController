@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PrismReController.Shared.Models;
 using PrismReController.Shared.Properties;
 
 namespace PrismReController.Display.Models
@@ -22,7 +18,7 @@ namespace PrismReController.Display.Models
 			}
 			catch (FileNotFoundException)
 			{
-				// TODO: ステータスバーにでも出す
+				StatusService.Current.Notify("VLC is Not Found.");
 			}			
 		}
 	}
