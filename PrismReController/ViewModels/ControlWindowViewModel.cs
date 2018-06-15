@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Livet;
 using Livet.Commands;
 using PrismReController.Models;
@@ -10,7 +10,7 @@ namespace PrismReController.ViewModels
 	{
 		public ControlWindowViewModel()
 		{
-			ConnectCommand = new ViewModelCommand(() =>
+			ConnectCommand = new ViewModelCommand(async () =>
 			{
 				void statusUpdate(object sender, EventArgs e)
 				{
@@ -19,7 +19,7 @@ namespace PrismReController.ViewModels
 				}
 
 				Connection.VlcConnectingsRaiseChanged += statusUpdate;
-				new Connection(Destination);
+				connection = await Connection.CreateAsync(Destination);
 			});
 		}
 
@@ -35,6 +35,21 @@ namespace PrismReController.ViewModels
 				RaisePropertyChanged();
 			}
 		}
+
+		private string connectedDest = "Not Connected";
+
+		public string ConnectedDest
+		{
+			get => connectedDest;
+			set
+			{
+				if (connectedDest == value) return;
+				connectedDest = value;
+				RaisePropertyChanged();
+			}
+		}
+
+		private Connection connection;
 
 		public ViewModelCommand ConnectCommand { get; }
 	}

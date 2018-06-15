@@ -57,6 +57,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Interop\Win32.cs" />
+    <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\VlcRunService.cs" />
     <Compile Include="Models\WindowService.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

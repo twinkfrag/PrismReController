@@ -5,12 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:controls="http://schemes.grabacr.net/winfx/2014/controls"
 		xmlns:sharedViews="clr-namespace:PrismReController.Shared.Views;assembly=PrismReController.Shared"
+		xmlns:sharedModels="clr-namespace:PrismReController.Shared.Models;assembly=PrismReController.Shared"
         xmlns:views="clr-namespace:PrismReController.Views"
 		xmlns:viewModels="clr-namespace:PrismReController.ViewModels"
 		xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 		xmlns:behaviors="http://schemas.livet-mvvm.net/2011/wpf"
-		xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=System"
-		xmlns:data="clr-namespace:PrismReController.Shared.Data;assembly=PrismReController.Shared"
 		mc:Ignorable="d"
 		TextOptions.TextFormattingMode="Display"
 		Background="{DynamicResource ThemeBrushKey}"
@@ -64,6 +63,30 @@
 
 			<TabItem Header="VLC Media Player">
 				<views:VlcControl />
+			</TabItem>
+
+			<TabItem Header="{Binding ConnectedDest}">
+				<ContentControl Style="{DynamicResource MainControlKey}">
+					<ScrollViewer>
+						<ListView ItemsSource="{Binding Path=ProcessList.SerialProcesses, Mode=OneWay}">
+							<i:Interaction.Triggers>
+								<i:EventTrigger EventName="SelectionChanged">
+									<behaviors:LivetCallMethodAction 
+										MethodName="Activate" 
+										MethodParameter="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=SelectedItem}" 
+										MethodTarget="{Binding}" />
+								</i:EventTrigger>
+							</i:Interaction.Triggers>
+							<ItemsControl.ItemTemplate>
+								<DataTemplate DataType="{x:Type sharedModels:SerialProcess}">
+									<StackPanel>
+										<TextBlock Text="{Binding MainWindowTitle}" />
+									</StackPanel>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ListView>
+					</ScrollViewer>
+				</ContentControl>
 			</TabItem>
 		</TabControl>
 

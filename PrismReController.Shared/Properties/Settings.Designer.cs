@@ -58,5 +58,17 @@ namespace PrismReController.Shared.Properties {
                 this["ConnectionRetryCount"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8089")]
+        public int ConnectionPort {
+            get {
+                return ((int)(this["ConnectionPort"]));
+            }
+            set {
+                this["ConnectionPort"] = value;
+            }
+        }
     }
 }

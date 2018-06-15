@@ -11,5 +11,8 @@
     <Setting Name="ConnectionRetryCount" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
+    <Setting Name="ConnectionPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8089</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
