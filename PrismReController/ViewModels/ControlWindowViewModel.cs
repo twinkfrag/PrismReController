@@ -51,6 +51,24 @@ namespace PrismReController.ViewModels
 
 		private Connection connection;
 
+		private ProcessList processList;
+
+		public ProcessList ProcessList
+		{
+			get => processList;
+			set
+			{
+				if (processList == value)return;
+				processList = value;
+				RaisePropertyChanged();
+			}
+		}
+
+		public async void Activate(SerialProcess process)
+		{
+			
+		}
+
 		public ViewModelCommand ConnectCommand { get; }
 	}
 }
